@@ -1,4 +1,4 @@
-package com.jio.userentry.presenter.compose
+package com.jio.userentry.presenter.adapter
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

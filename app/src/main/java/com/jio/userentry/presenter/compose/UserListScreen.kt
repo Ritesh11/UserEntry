@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.jio.userentry.data.EntryEvent
+import com.jio.userentry.presenter.adapter.UserCard
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
