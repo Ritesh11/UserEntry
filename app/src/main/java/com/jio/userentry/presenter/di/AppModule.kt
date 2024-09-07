@@ -26,6 +26,8 @@ class AppModule {
             .build()
     }
 
+    @Provides
+    @Singleton
     fun providesUserRepository(db: UserDatabase): UserRepository {
         return UserRepositoryImpl(db.userDao)
     }

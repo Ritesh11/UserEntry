@@ -1,11 +1,13 @@
 package com.jio.userentry.presenter.compose
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -14,6 +16,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
@@ -32,6 +35,8 @@ fun UserListScreen(
     modifier: Modifier = Modifier,
     viewModel: UserViewModel = viewModel(factory = factory)
 ) {
+
+    val userList = viewModel.users.collectAsState(initial = emptyList())
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         Scaffold(
@@ -52,9 +57,15 @@ fun UserListScreen(
                     .fillMaxHeight()
             ) {
 
-                LazyColumn() {
-                    item {
-                            // TODO get list of User
+                LazyColumn(
+                    modifier = modifier.padding(top = 20.dp)
+                        .fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    items(items = userList.value,
+                        key = { item -> item.id }
+                    ) { item ->
+                        UserCard(valuesEntered = item)
                     }
                 }
 

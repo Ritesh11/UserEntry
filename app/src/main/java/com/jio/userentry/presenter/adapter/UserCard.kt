@@ -19,10 +19,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jio.userentry.data.model.EntryEvent
+import com.jio.userentry.data.model.ValuesEntered
 
 @Composable
 fun UserCard(
-    valuesEntered: EntryEvent.ValuesEntered,
+    valuesEntered: ValuesEntered,
     modifier: Modifier = Modifier
 ) {
 

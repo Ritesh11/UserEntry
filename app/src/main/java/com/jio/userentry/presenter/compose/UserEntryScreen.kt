@@ -28,6 +28,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.jio.userentry.data.model.ValuesEntered
 import com.jio.userentry.presenter.viewmodel.UserViewModel
 import com.jio.userentry.presenter.viewmodel.UserViewModelFactory
 import kotlinx.coroutines.launch
@@ -122,7 +123,9 @@ fun UserEntryScreen(factory: UserViewModelFactory,
             Button(modifier = modifier.fillMaxWidth(),
                 onClick = {
                     if (name.isNotEmpty() && designation.isNotEmpty() && salary.isNotEmpty()) {
-                       // TODO save to DB
+
+                        viewModel.insertUser(ValuesEntered(id = 0, name = name,
+                            position = designation, salary = salary))
                     } else {
                         scope.launch {
                             snackbarHostState.showSnackbar("Please enter values")
