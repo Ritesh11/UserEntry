@@ -27,11 +27,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.jio.userentry.presenter.viewmodel.UserViewModel
+import com.jio.userentry.presenter.viewmodel.UserViewModelFactory
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun UserEntryScreen(modifier: Modifier = Modifier) {
+fun UserEntryScreen(factory: UserViewModelFactory,
+                    modifier: Modifier = Modifier,
+                    viewModel: UserViewModel = viewModel(factory = factory)
+) {
 
     var name by remember {
         mutableStateOf("")

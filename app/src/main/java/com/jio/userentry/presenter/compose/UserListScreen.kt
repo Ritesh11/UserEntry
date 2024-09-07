@@ -18,14 +18,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.jio.userentry.data.EntryEvent
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.jio.userentry.data.model.EntryEvent
 import com.jio.userentry.presenter.adapter.UserCard
+import com.jio.userentry.presenter.viewmodel.UserViewModel
+import com.jio.userentry.presenter.viewmodel.UserViewModelFactory
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun UserListScreen(
+    factory: UserViewModelFactory,
     onNavigateToEntryScreen: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: UserViewModel = viewModel(factory = factory)
 ) {
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
@@ -49,7 +54,7 @@ fun UserListScreen(
 
                 LazyColumn() {
                     item {
-                        UserCard(EntryEvent.ValuesEntered("Ritesh", "Android Developer", "22,00,000"))
+                            // TODO get list of User
                     }
                 }
 
